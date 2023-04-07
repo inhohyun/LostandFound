@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_lost"
+        android:icon="@drawable/lost_item"
+        android:title="분실문"/>
+
+    <item
+        android:id="@+id/navigation_find"
+        android:icon="@drawable/find_item"
+        android:title="습득물"/>
+
+    <item
+        android:id="@+id/navigation_my"
+        android:icon="@drawable/profile"
+        android:title="프로필" />
+
+</menu>

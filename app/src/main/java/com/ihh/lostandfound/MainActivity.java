@@ -21,14 +21,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //시작을 lostFragment로
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new LostFragment()).commit();
+
 
         fragmentSetting();
+
     }
 
     private void fragmentSetting() {
+        //시작을 lostFragment로
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new LostFragment()).commit();
 
          BottomNavigationView.OnNavigationItemSelectedListener navListener =
                 new BottomNavigationView.OnNavigationItemSelectedListener() {

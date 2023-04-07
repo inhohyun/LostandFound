@@ -14,7 +14,7 @@ import com.ihh.lostandfound.R;
 public class IntroActivity extends AppCompatActivity {
     Button btn_join;
     Button btn_login;
-    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, LoginActivity.class);
+                Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }
@@ -42,7 +42,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,JoinActivity.class);
+                Intent intent = new Intent(IntroActivity.this,JoinActivity.class);
                 startActivity(intent);
 
             }

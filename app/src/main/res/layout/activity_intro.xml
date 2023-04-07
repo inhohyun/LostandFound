@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.IntroActivity"
+    android:background="@color/backgrountColor">
+
+    <TextView
+        android:id="@+id/tv_start_main1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잃어버린"
+        app:layout_constraintTop_toTopOf="@id/Guild1"
+        app:layout_constraintStart_toStartOf="@id/Guild3"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tv_start_main2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="분실물 찾기"
+        app:layout_constraintTop_toBottomOf="@id/tv_start_main1"
+        app:layout_constraintStart_toStartOf="@+id/Guild3"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="잃어버린 분실믈 여기에서 찾아보세요."
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@id/Guild3"
+        app:layout_constraintTop_toBottomOf="@id/tv_start_main2" />
+
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/btn_intro"
+        android:text="회원가입"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/Guild4"
+        app:layout_constraintStart_toStartOf="@id/Guild3"
+        app:layout_constraintTop_toTopOf="@id/Guild_img" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_intro"
+        android:text="로그인"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/Guild4"
+        app:layout_constraintStart_toStartOf="@id/Guild3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Guild1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Guild2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Guild4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Guild3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Guild_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

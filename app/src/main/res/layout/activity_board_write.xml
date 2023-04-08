@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <Button
-                android:id="@+id/writeBtn"
+                android:id="@+id/writeBtn2"
                 android:text="입력"
                 android:background="@drawable/btn_intro"
                 android:layout_width="match_parent"

@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "로그인 실패패", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
 
 
                                }

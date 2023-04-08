@@ -13,7 +13,7 @@ import com.ihh.lostandfound.utils.FBAuth;
 import com.ihh.lostandfound.utils.FBRef;
 
 public class BoardWriteActivity extends AppCompatActivity {
-    Button writeBth;
+    Button writeBth2;
     EditText title;
     EditText content;
 
@@ -22,7 +22,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_write);
-        writeBth = findViewById(R.id.writeBtn);
+        writeBth2 = findViewById(R.id.writeBtn2);
         title = findViewById(R.id.titleArea);
         content = findViewById(R.id.contentArea);
         setonClickWriteBtn();
@@ -30,7 +30,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     }
 
     private void setonClickWriteBtn() {
-        writeBth.setOnClickListener(new View.OnClickListener() {
+        writeBth2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tit = title.getText().toString();

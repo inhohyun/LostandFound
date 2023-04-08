@@ -21,8 +21,6 @@ import com.ihh.lostandfound.login.JoinActivity;
 
 public class MyFragment extends Fragment {
 
-    private Button btn_logout;
-
     private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_my, container, false);
-        btn_logout = root.findViewById(R.id.btn_logout);
+        Button btn_logout = root.findViewById(R.id.btn_logout);
         mAuth = FirebaseAuth.getInstance();
 
         //로그아웃 버튼 클릭

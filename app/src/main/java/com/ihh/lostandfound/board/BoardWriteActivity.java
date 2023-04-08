@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ihh.lostandfound.R;
 import com.ihh.lostandfound.utils.FBAuth;
@@ -25,6 +26,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         title = findViewById(R.id.titleArea);
         content = findViewById(R.id.contentArea);
         setonClickWriteBtn();
+
     }
 
     private void setonClickWriteBtn() {
@@ -46,7 +48,10 @@ public class BoardWriteActivity extends AppCompatActivity {
                         .push()
                         .setValue(new BoardModel(tit, con, uid, time));
 
+                Toast.makeText(BoardWriteActivity.this, "게시글 입력 완료", Toast.LENGTH_SHORT).show();
 
+                //게시판 창으로 돌아가기기
+                finish();
 
             }
         });

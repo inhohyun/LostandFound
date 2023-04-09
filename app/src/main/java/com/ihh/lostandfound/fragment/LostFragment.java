@@ -22,14 +22,16 @@ import com.ihh.lostandfound.board.BoardWriteActivity;
 import com.ihh.lostandfound.board.lostBoardListAdapter;
 import com.ihh.lostandfound.utils.FBRef;
 
+import java.util.Collections;
 import java.util.List;
 
 
 public class LostFragment extends Fragment {
     private List<BoardModel> boardDataList;
-    private lostBoardListAdapter boardAdapter;
     private ImageView writeBtn;
-    lostBoardListAdapter boardRVAdapter;
+    private lostBoardListAdapter boardRVAdapter;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,24 +44,22 @@ public class LostFragment extends Fragment {
         View ViewRoot = inflater.inflate(R.layout.fragment_lost, container, false);
 
 
-            //버튼에서도 에러 발생?
         writeBtn = ViewRoot.findViewById(R.id.writeBtn);
 
 
 
-        //아래에서 에러 발생
         //게시판 어댑터 연결
         boardRVAdapter = new lostBoardListAdapter(boardDataList);
         ListView boardListView = ViewRoot.findViewById(R.id.lostBoardListView);
         boardListView.setAdapter(boardRVAdapter);
 
-        //FB에서 데이터 가져오기
-        getFBBoardData();
 
         //write 버튼 클릭
 
         setOnclickWriteBtn();
 
+        //FB에서 데이터 가져오기
+        getFBBoardData();
 
         return ViewRoot;
     }
@@ -75,23 +75,31 @@ public class LostFragment extends Fragment {
 
     }
 
-    private void getFBBoardData(){
+    private void getFBBoardData() {
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Handle the data change
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                boardDataList.clear();
+
                 for (DataSnapshot dataModel : dataSnapshot.getChildren()) {
+
+
                     BoardModel item = dataModel.getValue(BoardModel.class);
                     boardDataList.add(item);
-                    //어댑터 동기화
-                    boardAdapter.notifyDataSetChanged();
+
+
                 }
+
+
+                boardRVAdapter.notifyDataSetChanged();
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle the error
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle error
             }
         };
         FBRef.Companion.boardRef.addValueEventListener(postListener);

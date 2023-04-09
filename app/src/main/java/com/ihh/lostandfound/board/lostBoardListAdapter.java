@@ -12,7 +12,7 @@ import com.ihh.lostandfound.R;
 import java.util.List;
 
 public class lostBoardListAdapter extends BaseAdapter {
-    private List<BoardModel> boardList = null;
+    private List<BoardModel> boardList;
 
     public lostBoardListAdapter(List<BoardModel> boardList) {
         this.boardList = boardList;
@@ -28,11 +28,18 @@ public class lostBoardListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+        if (boardList == null) {
+            return 0;
+        }
         return boardList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+        if (boardList == null) {
+            return 0;
+        }
+
         return position;
     }
 
@@ -42,7 +49,8 @@ public class lostBoardListAdapter extends BaseAdapter {
         View view = convertView;
 
         if (view == null) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lost_list_item, parent, false);
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            view = inflater.inflate(R.layout.lost_list_item, parent, false);
         }
 
         TextView title = view.findViewById(R.id.titleArea);

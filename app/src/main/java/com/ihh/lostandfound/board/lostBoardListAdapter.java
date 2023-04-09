@@ -12,7 +12,7 @@ import com.ihh.lostandfound.R;
 import java.util.List;
 
 public class lostBoardListAdapter extends BaseAdapter {
-    private List<BoardModel> boardList;
+    private List<BoardModel> boardList = null;
 
     public lostBoardListAdapter(List<BoardModel> boardList) {
         this.boardList = boardList;
@@ -20,12 +20,14 @@ public class lostBoardListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if (boardList == null) {
+            return 0;
+        }
         return boardList.size();
     }
 
     @Override
     public Object getItem(int position) {
-
         return boardList.get(position);
     }
 
@@ -34,20 +36,22 @@ public class lostBoardListAdapter extends BaseAdapter {
         return position;
     }
 
-    //뷰를 가져와서 연결
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Your code for generating each item view goes here
+
         View view = convertView;
 
-        //뷰가 없으면 item의 뷰를 가져오기기
-       if(view == null){
+        if (view == null) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lost_list_item, parent, false);
         }
 
         TextView title = view.findViewById(R.id.titleArea);
-        title.setText(boardList.get(position).getTitle());
+        TextView content = view.findViewById(R.id.contentArea);
+        TextView time = view.findViewById(R.id.timeArea);
 
+        title.setText(boardList.get(position).getTitle());
+        content.setText(boardList.get(position).getContent());
+        time.setText(boardList.get(position).getTime());
 
         return view;
     }

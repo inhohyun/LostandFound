@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +28,8 @@ import java.util.List;
 public class LostFragment extends Fragment {
     private List<BoardModel> boardDataList;
     private lostBoardListAdapter boardAdapter;
-    private Button writeBtn;
+    private ImageView writeBtn;
+    lostBoardListAdapter boardRVAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +40,25 @@ public class LostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View ViewRoot = inflater.inflate(R.layout.fragment_lost, container, false);
-        ListView lostBoardListView = ViewRoot.findViewById(R.id.lostBoardListView);
+
+
+            //버튼에서도 에러 발생?
         writeBtn = ViewRoot.findViewById(R.id.writeBtn);
 
 
 
-
+        //아래에서 에러 발생
         //게시판 어댑터 연결
-        boardAdapter = new lostBoardListAdapter(boardDataList);
-        lostBoardListView.setAdapter(boardAdapter);
+        boardRVAdapter = new lostBoardListAdapter(boardDataList);
+        ListView boardListView = ViewRoot.findViewById(R.id.lostBoardListView);
+        boardListView.setAdapter(boardRVAdapter);
 
         //FB에서 데이터 가져오기
         getFBBoardData();
 
         //write 버튼 클릭
-        setOnclickWriteBtn();
 
+        setOnclickWriteBtn();
 
 
         return ViewRoot;

@@ -1,10 +1,10 @@
 package com.ihh.lostandfound.board;
 
 public class BoardModel {
-    private String title;
-    private String content;
-    private String uid;
-    private String time;
+    private String title = "";
+    private String content = "";
+    private String uid = "";
+    private String time = "";
 
     public BoardModel() {
         this.title = "";

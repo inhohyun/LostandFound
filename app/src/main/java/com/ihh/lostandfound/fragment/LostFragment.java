@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.ihh.lostandfound.board.BoardWriteActivity;
 import com.ihh.lostandfound.board.lostBoardListAdapter;
 import com.ihh.lostandfound.utils.FBRef;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,7 +32,10 @@ public class LostFragment extends Fragment {
     private List<BoardModel> boardDataList;
     private ImageView writeBtn;
     private lostBoardListAdapter boardRVAdapter;
+    private static final String TAG = LostFragment.class.getSimpleName();
 
+    public LostFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class LostFragment extends Fragment {
         writeBtn = ViewRoot.findViewById(R.id.writeBtn);
 
 
+        //BoardModel 초기화시키기
+        boardDataList = new ArrayList<>();
 
         //게시판 어댑터 연결
         boardRVAdapter = new lostBoardListAdapter(boardDataList);
@@ -55,7 +62,6 @@ public class LostFragment extends Fragment {
 
 
         //write 버튼 클릭
-
         setOnclickWriteBtn();
 
         //FB에서 데이터 가져오기
@@ -68,6 +74,8 @@ public class LostFragment extends Fragment {
         writeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "write click");
+
                 Intent intent = new Intent(getContext(), BoardWriteActivity.class);
                 startActivity(intent);
             }
@@ -81,20 +89,19 @@ public class LostFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                boardDataList.clear();
+
+
 
                 for (DataSnapshot dataModel : dataSnapshot.getChildren()) {
-
 
                     BoardModel item = dataModel.getValue(BoardModel.class);
                     boardDataList.add(item);
 
 
                 }
-
-
-                boardRVAdapter.notifyDataSetChanged();
-
+                Log.d(TAG, boardDataList.toString());
+                //데이터를 받아온 후 어댑터 동기화화
+               boardRVAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -104,6 +111,7 @@ public class LostFragment extends Fragment {
         };
         FBRef.Companion.boardRef.addValueEventListener(postListener);
     }
+
 
 
 }

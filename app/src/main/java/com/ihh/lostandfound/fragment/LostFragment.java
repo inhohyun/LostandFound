@@ -89,7 +89,8 @@ public class LostFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
+                //같은 게시물 생성되는 것 방지, 기존에 저장되어있는 list를 날리고 firebase에 저장되어있는 데이터를 받아서 저장
+                boardDataList.clear();
 
 
                 for (DataSnapshot dataModel : dataSnapshot.getChildren()) {
